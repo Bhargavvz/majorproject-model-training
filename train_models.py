@@ -56,7 +56,7 @@ USE_GPU = detect_gpu()
 
 # Device configs
 XGB_DEVICE = {"device": "cuda", "tree_method": "hist"} if USE_GPU else {"tree_method": "hist"}
-LGBM_DEVICE = {"device": "gpu"} if USE_GPU else {}
+LGBM_DEVICE = {}  # LightGBM GPU has known bugs with tree splits — use CPU (fast with 25 vCPU)
 
 # Plot style
 plt.style.use("seaborn-v0_8-darkgrid")
